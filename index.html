@@ -181,6 +181,43 @@
     }
 
 
+
+    .photo-meta {
+      display: none;
+      background: #f8fbff;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 10px;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .photo-player {
+      font-size: 22px;
+      font-weight: 900;
+      line-height: 1.05;
+    }
+
+    .photo-detail {
+      color: #33445c;
+      font-size: 13px;
+      font-weight: 800;
+      margin-top: 3px;
+    }
+
+    .screenshot-mode header {
+      display: none;
+    }
+
+    .screenshot-mode .fields,
+    .screenshot-mode #trainingField {
+      display: none;
+    }
+
+    .screenshot-mode .photo-meta {
+      display: block;
+    }
+
     .approval-card {
       background: #fff7e6;
       border: 2px solid #f0c36a;
@@ -550,6 +587,187 @@
       }
     }
 
+
+    @media (max-width: 680px) {
+      body.screenshot-mode {
+        padding: 6px 6px 64px;
+      }
+
+      .screenshot-mode .panel {
+        padding: 8px;
+        border-radius: 16px;
+        border-width: 2px;
+      }
+
+      .screenshot-mode .photo-meta {
+        padding: 7px 6px;
+        margin-bottom: 7px;
+        border-radius: 12px;
+      }
+
+      .screenshot-mode .photo-player {
+        font-size: 19px;
+      }
+
+      .screenshot-mode .photo-detail {
+        font-size: 11px;
+        margin-top: 1px;
+      }
+
+      .screenshot-mode .top-stats {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 5px;
+        margin-bottom: 7px;
+      }
+
+      .screenshot-mode .stat-card {
+        padding: 7px 3px;
+        border-radius: 12px;
+      }
+
+      .screenshot-mode .stat-label {
+        font-size: 10px;
+        margin-bottom: 2px;
+      }
+
+      .screenshot-mode .stat-value {
+        font-size: clamp(28px, 10vw, 40px);
+      }
+
+      .screenshot-mode .accuracy-box {
+        padding: 12px 7px;
+        border-radius: 15px;
+        margin-bottom: 7px;
+      }
+
+      .screenshot-mode .accuracy-label {
+        font-size: 12px;
+        margin-bottom: 2px;
+      }
+
+      .screenshot-mode .accuracy-value {
+        font-size: clamp(58px, 22vw, 88px);
+      }
+
+      .screenshot-mode .accuracy-sub {
+        font-size: 12px;
+        margin-top: 3px;
+      }
+
+      .screenshot-mode .progress-wrap {
+        height: 8px;
+        margin-top: 8px;
+      }
+
+      .screenshot-mode .approval-card {
+        padding: 8px 6px;
+        border-radius: 13px;
+        margin: 0 0 7px;
+        border-width: 2px;
+      }
+
+      .screenshot-mode .approval-title {
+        font-size: 10px;
+        margin-bottom: 2px;
+      }
+
+      .screenshot-mode .approval-value {
+        font-size: clamp(19px, 7vw, 28px);
+      }
+
+      .screenshot-mode .approval-info {
+        font-size: 11px;
+        margin-top: 2px;
+      }
+
+      .screenshot-mode .extra-stats {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 5px;
+        margin-bottom: 0;
+      }
+
+      .screenshot-mode .mini {
+        padding: 7px 2px;
+        border-radius: 12px;
+      }
+
+      .screenshot-mode .mini span {
+        font-size: 9px;
+        margin-bottom: 2px;
+      }
+
+      .screenshot-mode .mini strong {
+        font-size: 16px;
+      }
+
+      .screenshot-mode .photo-note {
+        display: none;
+      }
+
+      .screenshot-mode .photo-exit-btn {
+        width: min(92vw, 380px);
+        bottom: 7px;
+        padding: 10px 12px;
+        font-size: 14px;
+        border-width: 2px;
+      }
+    }
+
+    @media (max-height: 520px) and (orientation: landscape) {
+      body.screenshot-mode {
+        padding: 4px 4px 52px;
+      }
+
+      .screenshot-mode .panel {
+        padding: 6px;
+      }
+
+      .screenshot-mode .photo-meta {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 4px;
+        align-items: center;
+        text-align: center;
+        padding: 5px;
+        margin-bottom: 5px;
+      }
+
+      .screenshot-mode .photo-player {
+        font-size: 16px;
+      }
+
+      .screenshot-mode .photo-detail {
+        font-size: 10px;
+        margin-top: 0;
+      }
+
+      .screenshot-mode .accuracy-box {
+        padding: 8px 6px;
+      }
+
+      .screenshot-mode .accuracy-value {
+        font-size: 52px;
+      }
+
+      .screenshot-mode .progress-wrap {
+        display: none;
+      }
+
+      .screenshot-mode .approval-card {
+        padding: 5px;
+      }
+
+      .screenshot-mode .extra-stats {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .screenshot-mode .photo-exit-btn {
+        bottom: 5px;
+        padding: 8px 10px;
+        font-size: 13px;
+      }
+    }
+
     @media print {
       body {
         background: white;
@@ -586,7 +804,7 @@
         </div>
       </div>
 
-      <div class="field" style="margin-bottom: 16px;">
+      <div class="field" id="trainingField" style="margin-bottom: 16px;">
         <label for="trainingMode">Träningsläge</label>
         <select id="trainingMode">
           <option value="attempts:20">20 försök – Kortpass</option>
@@ -597,6 +815,12 @@
           <option value="goals:25">25 mål – Golden Goal XL</option>
           <option value="goals:50">50 mål – Golden Goal Super</option>
         </select>
+      </div>
+
+      <div class="photo-meta" id="photoMeta">
+        <div class="photo-player" id="photoPlayer">Namn</div>
+        <div class="photo-detail" id="photoDrill">Centerfint / Spjass</div>
+        <div class="photo-detail" id="photoMode">50 försök – Mellanpass</div>
       </div>
 
       <div class="top-stats">
@@ -674,7 +898,7 @@
         Fotoläget är aktivt. Tryck <strong>F</strong> eller knappen längst ned på skärmen för att gå tillbaka.
       </div>
     </section>
-    <button class="photo-exit-btn" id="photoExitBtn">← Tillbaka från fotoläget</button>
+    <button class="photo-exit-btn" id="photoExitBtn">Tillbaka</button>
   </main>
 
   <div class="toast" id="toast"></div>
@@ -698,6 +922,9 @@
       playerName: document.getElementById("playerName"),
       drillName: document.getElementById("drillName"),
       trainingMode: document.getElementById("trainingMode"),
+      photoPlayer: document.getElementById("photoPlayer"),
+      photoDrill: document.getElementById("photoDrill"),
+      photoMode: document.getElementById("photoMode"),
       goals: document.getElementById("goals"),
       misses: document.getElementById("misses"),
       total: document.getElementById("total"),
@@ -819,6 +1046,13 @@
       els.progress.style.width = Math.min(accuracy, 100) + "%";
       els.summaryText.textContent = state.goals + " mål på " + total + " försök";
 
+      const selectedModeText = els.trainingMode.options[els.trainingMode.selectedIndex]
+        ? els.trainingMode.options[els.trainingMode.selectedIndex].textContent
+        : "50 försök – Mellanpass";
+      els.photoPlayer.textContent = els.playerName.value.trim() || "Namn";
+      els.photoDrill.textContent = els.drillName.value.trim() || "Centerfint / Spjass";
+      els.photoMode.textContent = selectedModeText;
+
       const mode = getTrainingMode();
       const currentProgress = mode.type === "goals" ? state.goals : total;
       const approved = currentProgress >= mode.target;
@@ -939,8 +1173,8 @@
     document.getElementById("photoBtn").addEventListener("click", togglePhotoMode);
     document.getElementById("photoExitBtn").addEventListener("click", togglePhotoMode);
 
-    els.playerName.addEventListener("input", saveLocal);
-    els.drillName.addEventListener("input", saveLocal);
+    els.playerName.addEventListener("input", render);
+    els.drillName.addEventListener("input", render);
     els.trainingMode.addEventListener("change", render);
 
     document.addEventListener("keydown", (event) => {
