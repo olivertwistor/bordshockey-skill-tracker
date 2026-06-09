@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bordshockey Skill Tracker</title>
+  <title>BH Tracker</title>
   <style>
     :root {
       --bg: #f4f7fb;
@@ -18,9 +18,7 @@
       --shadow: 0 18px 45px rgba(20, 37, 63, 0.12);
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -33,16 +31,16 @@
       display: flex;
       justify-content: center;
       align-items: flex-start;
-      padding: 28px 16px;
+      padding: 24px 14px;
     }
 
     .app {
-      width: min(1040px, 100%);
+      width: min(980px, 100%);
     }
 
     header {
       text-align: center;
-      margin: 8px 0 26px;
+      margin: 6px 0 22px;
     }
 
     h1 {
@@ -58,12 +56,49 @@
     }
 
     .panel {
-      background: rgba(255,255,255,0.86);
+      background: rgba(255,255,255,0.88);
       border: 1px solid var(--border);
       border-radius: 28px;
       box-shadow: var(--shadow);
       padding: 24px;
       backdrop-filter: blur(10px);
+    }
+
+    .fields {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .field {
+      background: #f8fbff;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 13px;
+    }
+
+    label {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 7px;
+      font-weight: 800;
+    }
+
+    input, select {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px;
+      font-size: 16px;
+      outline: none;
+      background: white;
+    }
+
+    input:focus, select:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(13, 135, 233, 0.14);
     }
 
     .top-stats {
@@ -77,7 +112,7 @@
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 22px;
-      padding: 18px 16px;
+      padding: 18px 14px;
       text-align: center;
     }
 
@@ -85,32 +120,25 @@
       color: var(--muted);
       font-size: 14px;
       margin-bottom: 8px;
+      font-weight: 700;
     }
 
     .stat-value {
-      font-size: clamp(34px, 6vw, 56px);
-      font-weight: 800;
+      font-size: clamp(36px, 6vw, 62px);
+      font-weight: 900;
       line-height: 1;
     }
 
-    .stat-value.green {
-      color: var(--green);
-    }
-
-    .stat-value.red {
-      color: var(--red);
-    }
-
-    .stat-value.dark {
-      color: #24364d;
-    }
+    .green { color: var(--green); }
+    .red { color: var(--red); }
+    .dark { color: #24364d; }
 
     .accuracy-box {
       background: linear-gradient(135deg, var(--blue), var(--blue-dark));
       color: white;
       border-radius: 24px;
       text-align: center;
-      padding: 30px 18px;
+      padding: 32px 18px;
       margin-bottom: 20px;
       box-shadow: 0 18px 35px rgba(13, 135, 233, 0.26);
     }
@@ -119,10 +147,11 @@
       font-size: 17px;
       opacity: 0.92;
       margin-bottom: 8px;
+      font-weight: 700;
     }
 
     .accuracy-value {
-      font-size: clamp(64px, 13vw, 120px);
+      font-size: clamp(70px, 14vw, 132px);
       font-weight: 900;
       letter-spacing: -0.07em;
       line-height: 0.95;
@@ -131,7 +160,7 @@
     .accuracy-sub {
       margin-top: 10px;
       font-size: 16px;
-      opacity: 0.9;
+      opacity: 0.92;
     }
 
     .progress-wrap {
@@ -151,20 +180,63 @@
       transition: width 0.18s ease;
     }
 
+
+    .approval-card {
+      background: #fff7e6;
+      border: 2px solid #f0c36a;
+      border-radius: 20px;
+      padding: 16px;
+      margin: -4px 0 18px;
+      text-align: center;
+    }
+
+    .approval-card.approved {
+      background: #eafaf2;
+      border-color: #55c98a;
+    }
+
+    .approval-title {
+      font-size: 15px;
+      color: #5d4a1f;
+      font-weight: 900;
+      margin-bottom: 6px;
+    }
+
+    .approval-card.approved .approval-title {
+      color: #176c42;
+    }
+
+    .approval-value {
+      font-size: clamp(24px, 5vw, 38px);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+    }
+
+    .approval-info {
+      margin-top: 5px;
+      color: #5d4a1f;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .approval-card.approved .approval-info {
+      color: #176c42;
+    }
+
     .controls {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 14px;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
 
     button {
       border: none;
       cursor: pointer;
-      border-radius: 20px;
-      padding: 18px 16px;
+      border-radius: 18px;
+      padding: 18px 14px;
       font-size: 20px;
-      font-weight: 800;
+      font-weight: 900;
       color: white;
       transition: transform 0.08s ease, filter 0.1s ease;
       user-select: none;
@@ -175,19 +247,14 @@
       filter: brightness(0.95);
     }
 
-    .miss-btn {
-      background: var(--red);
-    }
-
-    .goal-btn {
-      background: var(--green);
-    }
+    .miss-btn { background: var(--red); }
+    .goal-btn { background: var(--green); }
 
     .small-controls {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 10px;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
     }
 
     .small-controls button {
@@ -198,45 +265,9 @@
       border: 1px solid var(--border);
     }
 
-    .settings {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-      margin-bottom: 18px;
-    }
-
-    .field {
-      background: #f8fbff;
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 14px;
-    }
-
-    label {
-      display: block;
-      color: var(--muted);
-      font-size: 13px;
-      margin-bottom: 7px;
-      font-weight: 700;
-    }
-
-    input {
-      width: 100%;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 12px;
-      font-size: 16px;
-      outline: none;
-    }
-
-    input:focus {
-      border-color: var(--blue);
-      box-shadow: 0 0 0 3px rgba(13, 135, 233, 0.14);
-    }
-
     .extra-stats {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 12px;
       margin-bottom: 16px;
     }
@@ -254,11 +285,10 @@
       color: var(--muted);
       font-size: 13px;
       margin-bottom: 6px;
+      font-weight: 700;
     }
 
-    .mini strong {
-      font-size: 24px;
-    }
+    .mini strong { font-size: 24px; }
 
     .help {
       background: #f8fbff;
@@ -276,18 +306,73 @@
       border-bottom-width: 3px;
       border-radius: 7px;
       padding: 2px 7px;
-      font-weight: 800;
+      font-weight: 900;
       font-family: inherit;
       white-space: nowrap;
     }
 
-    .flash {
-      animation: flash 0.18s ease;
+    .screenshot-mode .controls,
+    .screenshot-mode .small-controls,
+    .screenshot-mode .help {
+      display: none;
+    }
+
+    .screenshot-mode header {
+      margin-bottom: 12px;
+    }
+
+    .screenshot-mode .panel {
+      box-shadow: none;
+      border: 3px solid var(--blue);
+    }
+
+
+    .photo-exit-btn {
+      display: none;
+      position: fixed;
+      left: 50%;
+      bottom: 16px;
+      transform: translateX(-50%);
+      z-index: 9999;
+      width: min(92vw, 420px);
+      background: #122033;
+      color: white;
+      border: 3px solid white;
+      box-shadow: 0 10px 34px rgba(18, 32, 51, 0.34);
+      padding: 16px 18px;
+      font-size: 18px;
+      border-radius: 999px;
+      line-height: 1.1;
+      touch-action: manipulation;
+    }
+
+    body.screenshot-mode .photo-exit-btn,
+    .screenshot-mode .photo-exit-btn {
+      display: block;
+    }
+
+    .photo-note {
+      display: none;
+      text-align: center;
+      color: #33445c;
+      font-weight: 800;
+      margin-top: 12px;
+      font-size: 14px;
+    }
+
+    .screenshot-mode .photo-note {
+      display: block;
+    }
+
+    .flash { animation: flash 0.18s ease; }
+
+    body.screenshot-mode {
+      padding-bottom: 88px;
     }
 
     @keyframes flash {
       0% { transform: scale(1); }
-      50% { transform: scale(1.018); }
+      50% { transform: scale(1.012); }
       100% { transform: scale(1); }
     }
 
@@ -300,10 +385,11 @@
       border-radius: 999px;
       background: rgba(18, 32, 51, 0.92);
       color: white;
-      font-weight: 700;
+      font-weight: 800;
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.18s ease, bottom 0.18s ease;
+      z-index: 20;
     }
 
     .toast.show {
@@ -312,43 +398,63 @@
     }
 
     @media (max-width: 680px) {
+      body { padding: 14px 10px; }
+      .panel { padding: 16px; border-radius: 22px; }
+      .fields, .top-stats, .extra-stats { grid-template-columns: 1fr; }
+      .small-controls { grid-template-columns: 1fr; }
+      .controls { grid-template-columns: 1fr; }
+      button { padding: 18px 14px; }
+    }
+
+    @media print {
       body {
-        padding: 16px 10px;
+        background: white;
+        padding: 0;
+      }
+
+      header, .controls, .small-controls, .help {
+        display: none !important;
       }
 
       .panel {
-        padding: 16px;
-        border-radius: 22px;
-      }
-
-      .top-stats,
-      .settings,
-      .extra-stats {
-        grid-template-columns: 1fr;
-      }
-
-      .small-controls {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .controls {
-        grid-template-columns: 1fr;
-      }
-
-      button {
-        padding: 20px 14px;
+        box-shadow: none;
+        border: 2px solid #111;
       }
     }
   </style>
 </head>
 <body>
-  <main class="app">
+  <main class="app" id="app">
     <header>
       <h1>🏒 Bordshockey Skill Tracker</h1>
-      <p class="subtitle">Tryck pil vänster för miss och pil höger för mål.</p>
+      <p class="subtitle">Enkel fotoversion: vänsterpil = miss, högerpil = mål.</p>
     </header>
 
     <section class="panel" id="panel">
+      <div class="fields">
+        <div class="field">
+          <label for="playerName">Spelare</label>
+          <input id="playerName" placeholder="t.ex. Johan" />
+        </div>
+        <div class="field">
+          <label for="drillName">Övning</label>
+          <input id="drillName" value="Centerfint / Spjass" />
+        </div>
+      </div>
+
+      <div class="field" style="margin-bottom: 16px;">
+        <label for="trainingMode">Träningsläge</label>
+        <select id="trainingMode">
+          <option value="attempts:20">20 försök – Kortpass</option>
+          <option value="attempts:50" selected>50 försök – Mellanpass</option>
+          <option value="attempts:100">100 försök – Långpass</option>
+          <option value="attempts:1000">1000 försök – Superutmaning</option>
+          <option value="goals:10">10 mål – Golden Goal</option>
+          <option value="goals:25">25 mål – Golden Goal XL</option>
+          <option value="goals:50">50 mål – Golden Goal Super</option>
+        </select>
+      </div>
+
       <div class="top-stats">
         <div class="stat-card">
           <div class="stat-label">Mål</div>
@@ -367,10 +473,16 @@
       <div class="accuracy-box">
         <div class="accuracy-label">Träffprocent</div>
         <div class="accuracy-value" id="accuracy">0%</div>
-        <div class="accuracy-sub" id="targetText">Mål: 60%</div>
+        <div class="accuracy-sub" id="summaryText">0 mål på 0 försök</div>
         <div class="progress-wrap">
           <div class="progress" id="progress"></div>
         </div>
+      </div>
+
+      <div class="approval-card" id="approvalCard">
+        <div class="approval-title">Tävlingsstatus</div>
+        <div class="approval-value" id="approvalValue">Ej godkänt</div>
+        <div class="approval-info" id="approvalInfo">0/50 försök – fortsätt träna</div>
       </div>
 
       <div class="controls">
@@ -381,19 +493,7 @@
       <div class="small-controls">
         <button id="undoBtn">Ångra</button>
         <button id="resetBtn">Nollställ</button>
-        <button id="saveBtn">Spara pass</button>
-        <button id="exportBtn">CSV</button>
-      </div>
-
-      <div class="settings">
-        <div class="field">
-          <label for="drillName">Övning</label>
-          <input id="drillName" value="Centerfint / Spjass" />
-        </div>
-        <div class="field">
-          <label for="target">Målprocent</label>
-          <input id="target" type="number" min="1" max="100" value="60" />
-        </div>
+        <button id="photoBtn">Fotoläge</button>
       </div>
 
       <div class="extra-stats">
@@ -402,12 +502,16 @@
           <strong id="streak">0</strong>
         </div>
         <div class="mini">
-          <span>Bästa streak</span>
+          <span>Bästa Streak</span>
           <strong id="bestStreak">0</strong>
         </div>
         <div class="mini">
-          <span>Sparade pass</span>
-          <strong id="sessionsCount">0</strong>
+          <span>Tid</span>
+          <strong id="timerText">00:00</strong>
+        </div>
+        <div class="mini">
+          <span>Datum</span>
+          <strong id="dateText">-</strong>
         </div>
       </div>
 
@@ -417,11 +521,16 @@
         <kbd>→</kbd> = mål,
         <kbd>U</kbd> = ångra,
         <kbd>R</kbd> = nollställ,
-        <kbd>S</kbd> = spara pass.
+        <kbd>F</kbd> = fotoläge.
         <br />
-        Tips: Lägg datorn/surfplattan bredvid bordet och tryck bara efter varje spjassförsök.
+        För veckotävling: välj träningsläge, kör klart passet och fota skärmen. I vanliga pass räknas försök. I Golden Goal räknas mål. Timern startar vid första mål/miss och stannar när du går till fotoläget.
+      </div>
+
+      <div class="photo-note">
+        Fotoläget är aktivt. Tryck <strong>F</strong> eller knappen längst ned på skärmen för att gå tillbaka.
       </div>
     </section>
+    <button class="photo-exit-btn" id="photoExitBtn">← Tillbaka från fotoläget</button>
   </main>
 
   <div class="toast" id="toast"></div>
@@ -433,46 +542,73 @@
       history: [],
       streak: 0,
       bestStreak: 0,
-      sessions: []
+      timerStartAt: null,
+      timerElapsedMs: 0,
+      timerRunning: false,
+      timerStopped: false
     };
 
     const els = {
+      app: document.getElementById("app"),
       panel: document.getElementById("panel"),
+      playerName: document.getElementById("playerName"),
+      drillName: document.getElementById("drillName"),
+      trainingMode: document.getElementById("trainingMode"),
       goals: document.getElementById("goals"),
       misses: document.getElementById("misses"),
       total: document.getElementById("total"),
       accuracy: document.getElementById("accuracy"),
       progress: document.getElementById("progress"),
-      target: document.getElementById("target"),
-      targetText: document.getElementById("targetText"),
-      drillName: document.getElementById("drillName"),
+      summaryText: document.getElementById("summaryText"),
+      approvalCard: document.getElementById("approvalCard"),
+      approvalValue: document.getElementById("approvalValue"),
+      approvalInfo: document.getElementById("approvalInfo"),
       streak: document.getElementById("streak"),
       bestStreak: document.getElementById("bestStreak"),
-      sessionsCount: document.getElementById("sessionsCount"),
+      timerText: document.getElementById("timerText"),
+      dateText: document.getElementById("dateText"),
       toast: document.getElementById("toast")
     };
 
     function load() {
-      const saved = localStorage.getItem("bhSkillTracker");
-      if (!saved) return;
-
-      try {
-        const parsed = JSON.parse(saved);
-        Object.assign(state, parsed);
-      } catch (e) {
-        console.warn("Kunde inte läsa sparad data", e);
+      const saved = localStorage.getItem("bhSimpleTracker");
+      if (saved) {
+        try { Object.assign(state, JSON.parse(saved)); } catch (e) {}
       }
 
-      const savedName = localStorage.getItem("bhSkillTrackerDrillName");
-      const savedTarget = localStorage.getItem("bhSkillTrackerTarget");
-      if (savedName) els.drillName.value = savedName;
-      if (savedTarget) els.target.value = savedTarget;
+      const name = localStorage.getItem("bhSimpleTracker_playerName");
+      const drill = localStorage.getItem("bhSimpleTracker_drillName");
+      const trainingMode = localStorage.getItem("bhSimpleTracker_trainingMode");
+      if (name) els.playerName.value = name;
+      if (drill) els.drillName.value = drill;
+      if (trainingMode) {
+        // Bakåtkompatibilitet om en äldre version sparat 20/50/100/1000.
+        if (["20", "50", "100", "1000"].includes(trainingMode)) {
+          els.trainingMode.value = "attempts:" + trainingMode;
+        } else {
+          els.trainingMode.value = trainingMode;
+        }
+      }
     }
 
     function saveLocal() {
-      localStorage.setItem("bhSkillTracker", JSON.stringify(state));
-      localStorage.setItem("bhSkillTrackerDrillName", els.drillName.value);
-      localStorage.setItem("bhSkillTrackerTarget", els.target.value);
+      localStorage.setItem("bhSimpleTracker", JSON.stringify(state));
+      localStorage.setItem("bhSimpleTracker_playerName", els.playerName.value);
+      localStorage.setItem("bhSimpleTracker_drillName", els.drillName.value);
+      localStorage.setItem("bhSimpleTracker_trainingMode", els.trainingMode.value);
+    }
+
+    function getTrainingMode() {
+      const raw = els.trainingMode.value || "attempts:50";
+      const parts = raw.split(":");
+      const type = parts[0] || "attempts";
+      const target = Number(parts[1]) || 50;
+
+      return {
+        type,
+        target,
+        label: type === "goals" ? "mål" : "försök"
+      };
     }
 
     function getTotal() {
@@ -484,24 +620,74 @@
       return total === 0 ? 0 : Math.round((state.goals / total) * 100);
     }
 
+    function formatTime(ms) {
+      const totalSeconds = Math.floor(ms / 1000);
+      const minutes = Math.floor(totalSeconds / 60);
+      const seconds = totalSeconds % 60;
+      return String(minutes).padStart(2, "0") + ":" + String(seconds).padStart(2, "0");
+    }
+
+    function getElapsedMs() {
+      if (state.timerRunning && state.timerStartAt) {
+        return state.timerElapsedMs + (Date.now() - state.timerStartAt);
+      }
+      return state.timerElapsedMs;
+    }
+
+    function updateTimerDisplay() {
+      els.timerText.textContent = formatTime(getElapsedMs());
+    }
+
+    function startTimerIfNeeded() {
+      if (state.timerRunning || state.timerStopped) return;
+      state.timerStartAt = Date.now();
+      state.timerRunning = true;
+      state.timerStopped = false;
+    }
+
+    function stopTimer() {
+      if (!state.timerRunning) return;
+      state.timerElapsedMs = getElapsedMs();
+      state.timerStartAt = null;
+      state.timerRunning = false;
+      state.timerStopped = true;
+      updateTimerDisplay();
+      saveLocal();
+    }
+
+    function resetTimer() {
+      state.timerStartAt = null;
+      state.timerElapsedMs = 0;
+      state.timerRunning = false;
+      state.timerStopped = false;
+      updateTimerDisplay();
+    }
+
     function render() {
       const total = getTotal();
       const accuracy = getAccuracy();
-      const target = Number(els.target.value) || 60;
+      const today = new Date().toLocaleDateString("sv-SE");
 
       els.goals.textContent = state.goals;
       els.misses.textContent = state.misses;
       els.total.textContent = total;
       els.accuracy.textContent = accuracy + "%";
       els.progress.style.width = Math.min(accuracy, 100) + "%";
-      els.targetText.textContent = "Mål: " + target + "%";
+      els.summaryText.textContent = state.goals + " mål på " + total + " försök";
+
+      const mode = getTrainingMode();
+      const currentProgress = mode.type === "goals" ? state.goals : total;
+      const approved = currentProgress >= mode.target;
+      els.approvalCard.classList.toggle("approved", approved);
+      els.approvalValue.textContent = approved ? "Godkänt pass ✅" : "Ej godkänt";
+      els.approvalInfo.textContent = approved
+        ? currentProgress + "/" + mode.target + " " + mode.label + " – tävlingsgodkänt"
+        : currentProgress + "/" + mode.target + " " + mode.label + " – fortsätt träna";
+
       els.streak.textContent = state.streak;
       els.bestStreak.textContent = state.bestStreak;
-      els.sessionsCount.textContent = state.sessions.length;
-
-      if (total > 0 && accuracy >= target) {
-        els.targetText.textContent = "Mål: " + target + "% — klart ✅";
-      }
+      updateTimerDisplay();
+      els.dateText.textContent = today;
 
       saveLocal();
     }
@@ -516,12 +702,17 @@
       els.toast.textContent = text;
       els.toast.classList.add("show");
       clearTimeout(window.toastTimer);
-      window.toastTimer = setTimeout(() => {
-        els.toast.classList.remove("show");
-      }, 1300);
+      window.toastTimer = setTimeout(() => els.toast.classList.remove("show"), 1300);
     }
 
     function addResult(type) {
+      if (els.app.classList.contains("screenshot-mode")) {
+        showToast("Fotoläge är aktivt");
+        return;
+      }
+
+      startTimerIfNeeded();
+
       if (type === "goal") {
         state.goals += 1;
         state.streak += 1;
@@ -537,24 +728,6 @@
 
       flash();
       render();
-    }
-
-    function undo() {
-      const last = state.history.pop();
-      if (!last) {
-        showToast("Inget att ångra");
-        return;
-      }
-
-      if (last === "goal") {
-        state.goals = Math.max(0, state.goals - 1);
-      } else {
-        state.misses = Math.max(0, state.misses - 1);
-      }
-
-      recalcStreaks();
-      render();
-      showToast("Ångrat");
     }
 
     function recalcStreaks() {
@@ -574,73 +747,57 @@
       state.bestStreak = best;
     }
 
+    function undo() {
+      const last = state.history.pop();
+      if (!last) {
+        showToast("Inget att ångra");
+        return;
+      }
+
+      if (last === "goal") state.goals = Math.max(0, state.goals - 1);
+      if (last === "miss") state.misses = Math.max(0, state.misses - 1);
+
+      recalcStreaks();
+      render();
+      showToast("Ångrat");
+    }
+
     function resetCurrent() {
-      // Direkt nollställning utan confirm-ruta.
-      // Vissa webbläsare/sandboxes blockerar confirm(), så knappen kunde kännas som att den inte fungerade.
       state.goals = 0;
       state.misses = 0;
       state.history = [];
       state.streak = 0;
       state.bestStreak = 0;
-
-      saveLocal();
+      resetTimer();
       render();
       showToast("Nollställt");
     }
 
-    function saveSession() {
-      const total = getTotal();
-      if (total === 0) {
-        showToast("Inget pass att spara");
-        return;
+    function togglePhotoMode() {
+      const enteringPhotoMode = !els.app.classList.contains("screenshot-mode");
+
+      if (enteringPhotoMode) {
+        stopTimer();
+        els.app.classList.add("screenshot-mode");
+        document.body.classList.add("screenshot-mode");
+      } else {
+        els.app.classList.remove("screenshot-mode");
+        document.body.classList.remove("screenshot-mode");
       }
 
-      state.sessions.push({
-        date: new Date().toLocaleString("sv-SE"),
-        drill: els.drillName.value || "Övning",
-        goals: state.goals,
-        misses: state.misses,
-        total,
-        accuracy: getAccuracy(),
-        bestStreak: state.bestStreak
-      });
-
-      render();
-      showToast("Pass sparat");
-    }
-
-    function exportCsv() {
-      const rows = [
-        ["Datum", "Övning", "Mål", "Missar", "Totalt", "Träffprocent", "Bästa streak"]
-      ];
-
-      for (const s of state.sessions) {
-        rows.push([s.date, s.drill, s.goals, s.misses, s.total, s.accuracy + "%", s.bestStreak]);
-      }
-
-      const csv = rows
-        .map(row => row.map(value => '"' + String(value).replaceAll('"', '""') + '"').join(","))
-        .join("\n");
-
-      const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = "bordshockey-skill-tracker.csv";
-      a.click();
-      URL.revokeObjectURL(url);
-      showToast("CSV skapad");
+      showToast(els.app.classList.contains("screenshot-mode") ? "Fotoläge på – tiden är stoppad" : "Fotoläge av");
     }
 
     document.getElementById("missBtn").addEventListener("click", () => addResult("miss"));
     document.getElementById("goalBtn").addEventListener("click", () => addResult("goal"));
     document.getElementById("undoBtn").addEventListener("click", undo);
     document.getElementById("resetBtn").addEventListener("click", resetCurrent);
-    document.getElementById("saveBtn").addEventListener("click", saveSession);
-    document.getElementById("exportBtn").addEventListener("click", exportCsv);
+    document.getElementById("photoBtn").addEventListener("click", togglePhotoMode);
+    document.getElementById("photoExitBtn").addEventListener("click", togglePhotoMode);
 
-    els.target.addEventListener("input", render);
+    els.playerName.addEventListener("input", saveLocal);
     els.drillName.addEventListener("input", saveLocal);
+    els.trainingMode.addEventListener("change", render);
 
     document.addEventListener("keydown", (event) => {
       const tag = document.activeElement.tagName.toLowerCase();
@@ -666,14 +823,17 @@
         resetCurrent();
       }
 
-      if (event.key.toLowerCase() === "s") {
+      if (event.key.toLowerCase() === "f") {
         event.preventDefault();
-        saveSession();
+        togglePhotoMode();
       }
     });
 
     load();
     render();
+    setInterval(() => {
+      if (state.timerRunning) updateTimerDisplay();
+    }, 250);
   </script>
 </body>
 </html>
