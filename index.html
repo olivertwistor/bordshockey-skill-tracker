@@ -181,43 +181,6 @@
     }
 
 
-
-    .photo-meta {
-      display: none;
-      background: #f8fbff;
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 10px;
-      margin-bottom: 10px;
-      text-align: center;
-    }
-
-    .photo-player {
-      font-size: 22px;
-      font-weight: 900;
-      line-height: 1.05;
-    }
-
-    .photo-detail {
-      color: #33445c;
-      font-size: 13px;
-      font-weight: 800;
-      margin-top: 3px;
-    }
-
-    .screenshot-mode header {
-      display: none;
-    }
-
-    .screenshot-mode .fields,
-    .screenshot-mode #trainingField {
-      display: none;
-    }
-
-    .screenshot-mode .photo-meta {
-      display: block;
-    }
-
     .approval-card {
       background: #fff7e6;
       border: 2px solid #f0c36a;
@@ -335,6 +298,26 @@
       color: #33445c;
       font-size: 15px;
       line-height: 1.45;
+    }
+
+
+
+    .help ul {
+      margin: 8px 0 0;
+      padding-left: 22px;
+    }
+
+    .help-section {
+      margin-top: 12px;
+    }
+
+    .help ol {
+      margin: 8px 0 0;
+      padding-left: 22px;
+    }
+
+    .help li {
+      margin: 5px 0;
     }
 
     .help kbd {
@@ -587,187 +570,6 @@
       }
     }
 
-
-    @media (max-width: 680px) {
-      body.screenshot-mode {
-        padding: 6px 6px 64px;
-      }
-
-      .screenshot-mode .panel {
-        padding: 8px;
-        border-radius: 16px;
-        border-width: 2px;
-      }
-
-      .screenshot-mode .photo-meta {
-        padding: 7px 6px;
-        margin-bottom: 7px;
-        border-radius: 12px;
-      }
-
-      .screenshot-mode .photo-player {
-        font-size: 19px;
-      }
-
-      .screenshot-mode .photo-detail {
-        font-size: 11px;
-        margin-top: 1px;
-      }
-
-      .screenshot-mode .top-stats {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 5px;
-        margin-bottom: 7px;
-      }
-
-      .screenshot-mode .stat-card {
-        padding: 7px 3px;
-        border-radius: 12px;
-      }
-
-      .screenshot-mode .stat-label {
-        font-size: 10px;
-        margin-bottom: 2px;
-      }
-
-      .screenshot-mode .stat-value {
-        font-size: clamp(28px, 10vw, 40px);
-      }
-
-      .screenshot-mode .accuracy-box {
-        padding: 12px 7px;
-        border-radius: 15px;
-        margin-bottom: 7px;
-      }
-
-      .screenshot-mode .accuracy-label {
-        font-size: 12px;
-        margin-bottom: 2px;
-      }
-
-      .screenshot-mode .accuracy-value {
-        font-size: clamp(58px, 22vw, 88px);
-      }
-
-      .screenshot-mode .accuracy-sub {
-        font-size: 12px;
-        margin-top: 3px;
-      }
-
-      .screenshot-mode .progress-wrap {
-        height: 8px;
-        margin-top: 8px;
-      }
-
-      .screenshot-mode .approval-card {
-        padding: 8px 6px;
-        border-radius: 13px;
-        margin: 0 0 7px;
-        border-width: 2px;
-      }
-
-      .screenshot-mode .approval-title {
-        font-size: 10px;
-        margin-bottom: 2px;
-      }
-
-      .screenshot-mode .approval-value {
-        font-size: clamp(19px, 7vw, 28px);
-      }
-
-      .screenshot-mode .approval-info {
-        font-size: 11px;
-        margin-top: 2px;
-      }
-
-      .screenshot-mode .extra-stats {
-        grid-template-columns: repeat(4, 1fr);
-        gap: 5px;
-        margin-bottom: 0;
-      }
-
-      .screenshot-mode .mini {
-        padding: 7px 2px;
-        border-radius: 12px;
-      }
-
-      .screenshot-mode .mini span {
-        font-size: 9px;
-        margin-bottom: 2px;
-      }
-
-      .screenshot-mode .mini strong {
-        font-size: 16px;
-      }
-
-      .screenshot-mode .photo-note {
-        display: none;
-      }
-
-      .screenshot-mode .photo-exit-btn {
-        width: min(92vw, 380px);
-        bottom: 7px;
-        padding: 10px 12px;
-        font-size: 14px;
-        border-width: 2px;
-      }
-    }
-
-    @media (max-height: 520px) and (orientation: landscape) {
-      body.screenshot-mode {
-        padding: 4px 4px 52px;
-      }
-
-      .screenshot-mode .panel {
-        padding: 6px;
-      }
-
-      .screenshot-mode .photo-meta {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        gap: 4px;
-        align-items: center;
-        text-align: center;
-        padding: 5px;
-        margin-bottom: 5px;
-      }
-
-      .screenshot-mode .photo-player {
-        font-size: 16px;
-      }
-
-      .screenshot-mode .photo-detail {
-        font-size: 10px;
-        margin-top: 0;
-      }
-
-      .screenshot-mode .accuracy-box {
-        padding: 8px 6px;
-      }
-
-      .screenshot-mode .accuracy-value {
-        font-size: 52px;
-      }
-
-      .screenshot-mode .progress-wrap {
-        display: none;
-      }
-
-      .screenshot-mode .approval-card {
-        padding: 5px;
-      }
-
-      .screenshot-mode .extra-stats {
-        grid-template-columns: repeat(4, 1fr);
-      }
-
-      .screenshot-mode .photo-exit-btn {
-        bottom: 5px;
-        padding: 8px 10px;
-        font-size: 13px;
-      }
-    }
-
     @media print {
       body {
         background: white;
@@ -789,6 +591,7 @@
   <main class="app" id="app">
     <header>
       <h1>🏒 Bordshockey Skill Tracker</h1>
+      <p class="subtitle">Skapat av Johan Estmo</p>
     </header>
 
     <section class="panel" id="panel">
@@ -803,23 +606,18 @@
         </div>
       </div>
 
-      <div class="field" id="trainingField" style="margin-bottom: 16px;">
+      <div class="field" style="margin-bottom: 16px;">
         <label for="trainingMode">Träningsläge</label>
         <select id="trainingMode">
           <option value="attempts:20">20 försök – Kortpass</option>
           <option value="attempts:50" selected>50 försök – Mellanpass</option>
           <option value="attempts:100">100 försök – Långpass</option>
-          <option value="attempts:1000">1000 försök – Superutmaning</option>
+          <option value="attempts:500">500 försök – Superutmaning</option>
+          <option value="attempts:1000">1000 försök – Världsmästare!</option>
           <option value="goals:10">10 mål – Golden Goal</option>
           <option value="goals:25">25 mål – Golden Goal XL</option>
           <option value="goals:50">50 mål – Golden Goal Super</option>
         </select>
-      </div>
-
-      <div class="photo-meta" id="photoMeta">
-        <div class="photo-player" id="photoPlayer">Namn</div>
-        <div class="photo-detail" id="photoDrill">Centerfint / Spjass</div>
-        <div class="photo-detail" id="photoMode">50 försök – Mellanpass</div>
       </div>
 
       <div class="top-stats">
@@ -883,21 +681,54 @@
       </div>
 
       <div class="help">
-        <strong>Snabbkommandon:</strong>
-        <kbd>←</kbd> = miss,
-        <kbd>→</kbd> = mål,
-        <kbd>U</kbd> = ångra,
-        <kbd>R</kbd> = nollställ,
-        <kbd>F</kbd> = fotoläge.
-        <br />
-        För veckotävling: välj träningsläge, kör klart passet och fota skärmen. I vanliga pass räknas försök. I Golden Goal räknas mål. Timern startar vid första mål/miss och stannar när du går till fotoläget.
+        <strong>Så gör du med mobil:</strong>
+        <ol>
+          <li>Skriv ditt <strong>namn</strong>.</li>
+          <li>Skriv vilken <strong>övning</strong> du tränar.</li>
+          <li>Välj <strong>träningsläge</strong>.</li>
+          <li>Tryck <strong>MÅL</strong> när du sätter försöket.</li>
+          <li>Tryck <strong>MISS</strong> när du missar försöket.</li>
+          <li>Fortsätt tills passet är <strong>Godkänt</strong>.</li>
+          <li>Tryck <strong>Fotoläge</strong>.</li>
+          <li>Ta en <strong>skärmbild</strong> med mobilen.</li>
+          <li>Lägg upp bilden i klubbchatten.</li>
+        </ol>
+
+        <div class="help-section">
+          <strong>Träningslägen:</strong>
+          <ul>
+            <li><strong>Försök:</strong> Passet blir godkänt när du har gjort valt antal försök. Både mål och miss räknas som försök.</li>
+            <li><strong>Golden Goal:</strong> Passet blir godkänt när du har gjort valt antal mål. Missar räknas fortfarande med i träffprocenten.</li>
+          </ul>
+        </div>
+
+        <div class="help-section">
+          <strong>Så gör du med PC:</strong>
+          <ul>
+            <li>Använd <strong>vänsterpil</strong> för MISS.</li>
+            <li>Använd <strong>högerpil</strong> för MÅL.</li>
+            <li>Tryck <strong>F</strong> för Fotoläge.</li>
+            <li>Tryck <strong>U</strong> för att ångra.</li>
+            <li>Tryck <strong>R</strong> för att nollställa.</li>
+            <li>Ta skärmbild och lägg upp i klubbchatten.</li>
+          </ul>
+        </div>
+
+        <div class="help-section">
+          <strong>Skärmbild:</strong>
+          <ul>
+            <li><strong>iPhone:</strong> sidoknappen + volym upp.</li>
+            <li><strong>Android:</strong> oftast strömknappen + volym ned.</li>
+            <li><strong>PC:</strong> Print Screen eller Windows + Shift + S.</li>
+          </ul>
+        </div>
       </div>
 
       <div class="photo-note">
         Fotoläget är aktivt. Tryck <strong>F</strong> eller knappen längst ned på skärmen för att gå tillbaka.
       </div>
     </section>
-    <button class="photo-exit-btn" id="photoExitBtn">Tillbaka</button>
+    <button class="photo-exit-btn" id="photoExitBtn">← Tillbaka från fotoläget</button>
   </main>
 
   <div class="toast" id="toast"></div>
@@ -921,9 +752,6 @@
       playerName: document.getElementById("playerName"),
       drillName: document.getElementById("drillName"),
       trainingMode: document.getElementById("trainingMode"),
-      photoPlayer: document.getElementById("photoPlayer"),
-      photoDrill: document.getElementById("photoDrill"),
-      photoMode: document.getElementById("photoMode"),
       goals: document.getElementById("goals"),
       misses: document.getElementById("misses"),
       total: document.getElementById("total"),
@@ -1045,13 +873,6 @@
       els.progress.style.width = Math.min(accuracy, 100) + "%";
       els.summaryText.textContent = state.goals + " mål på " + total + " försök";
 
-      const selectedModeText = els.trainingMode.options[els.trainingMode.selectedIndex]
-        ? els.trainingMode.options[els.trainingMode.selectedIndex].textContent
-        : "50 försök – Mellanpass";
-      els.photoPlayer.textContent = els.playerName.value.trim() || "Namn";
-      els.photoDrill.textContent = els.drillName.value.trim() || "Centerfint / Spjass";
-      els.photoMode.textContent = selectedModeText;
-
       const mode = getTrainingMode();
       const currentProgress = mode.type === "goals" ? state.goals : total;
       const approved = currentProgress >= mode.target;
@@ -1172,8 +993,8 @@
     document.getElementById("photoBtn").addEventListener("click", togglePhotoMode);
     document.getElementById("photoExitBtn").addEventListener("click", togglePhotoMode);
 
-    els.playerName.addEventListener("input", render);
-    els.drillName.addEventListener("input", render);
+    els.playerName.addEventListener("input", saveLocal);
+    els.drillName.addEventListener("input", saveLocal);
     els.trainingMode.addEventListener("change", render);
 
     document.addEventListener("keydown", (event) => {
